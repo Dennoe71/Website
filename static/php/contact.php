@@ -19,11 +19,6 @@ else {
   $error = true;
 }
 
-// Check that referer is local server.
-/*if (!isset($_SERVER['HTTP_REFERER']) || (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST) != $_SERVER['SERVER_NAME'])) {
-  exit('Direct access not permitted');
-}*/
-
 // Check that this is a post request.
 if ($_SERVER['REQUEST_METHOD'] != 'POST' || empty($_POST)) {
   $error = true;
@@ -72,10 +67,9 @@ if (!$error) {
 }
 
 $status = $success ? 'submitted' : 'error';
-$contact_form_url = strtok($_SERVER['HTTP_REFERER'], '?');
 
 // Redirect back to contact form with status.
-header('Location: https://libreweb.org/?' . $status, TRUE, 302);
+header('Location: https://libreweb.org/?' . $status . "#fh5co-contact", TRUE, 302);
 exit;
 
 function _contact_ff_wrap(&$line) {
