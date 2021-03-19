@@ -75,7 +75,7 @@ $status = $success ? 'submitted' : 'error';
 $contact_form_url = strtok($_SERVER['HTTP_REFERER'], '?');
 
 // Redirect back to contact form with status.
-header('Location: ' . $contact_form_url . '?' . $status, TRUE, 302);
+header('Location: https://libreweb.org/?' . $status, TRUE, 302);
 exit;
 
 function _contact_ff_wrap(&$line) {
