@@ -20,9 +20,9 @@ else {
 }
 
 // Check that referer is local server.
-if (!isset($_SERVER['HTTP_REFERER']) || (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST) != $_SERVER['SERVER_NAME'])) {
+/*if (!isset($_SERVER['HTTP_REFERER']) || (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST) != $_SERVER['SERVER_NAME'])) {
   exit('Direct access not permitted');
-}
+}*/
 
 // Check that this is a post request.
 if ($_SERVER['REQUEST_METHOD'] != 'POST' || empty($_POST)) {
