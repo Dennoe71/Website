@@ -37,6 +37,22 @@ else {
   $error = true;
 }
 
+$data = array(
+  'secret' => "0xA729e69A502e2E85127B17d4C762c8F801a9E9e8",
+  'response' => $_POST['h-captcha-response']
+);$verify = curl_init();
+curl_setopt($verify, CURLOPT_URL, "https://hcaptcha.com/siteverify");
+curl_setopt($verify, CURLOPT_POST, true);
+curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
+curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($verify);// var_dump($response);$responseData = json_decode($response);
+if($responseData->success) {
+  // Continue ...
+} 
+else {
+  $error = true;
+}
+
 if (!$error) {
   // Construct the mail with headers.
   $name = _contact_clean_str($_POST['name'], ENT_QUOTES, true, true);
